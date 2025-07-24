@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meniu Restaurant</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<h1>Meniu Restaurant</h1>
+<a href="/meniu/adauga" style="display:inline-block; margin-bottom: 20px; padding: 10px 15px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Adaugă fel nou</a>
+<table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Nume</th>
+        <th>Preț (RON)</th>
+        <th>Acțiuni</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fel : ${feluri}">
+        <td th:text="${fel.nume}"></td>
+        <td th:text="${fel.pret}"></td>
+        <td>
+            <a th:href="@{/meniu/sterge/{id}(id=${fel.id})}" style="color: red;" onclick="return confirm('Ștergi felul de mâncare?');">Șterge</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
